@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Documentación del proyecto de simulación de un túnel de lavado de coches con tests unitarios.">
+        <meta name="author" content="Tu Nombre">
+        <link rel="canonical" href="http://localhost:8000/">
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Simulación Lavadero de Coches - Tarea Obligatoria 1</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/fontawesome.min.css" rel="stylesheet">
+        <link href="css/brands.min.css" rel="stylesheet">
+        <link href="css/solid.min.css" rel="stylesheet">
+        <link href="css/v4-font-face.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">Simulación Lavadero de Coches - Tarea Obligatoria 1</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="2"><a href="#elementos-de-python" class="nav-link">Elementos de Python</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="elementos-de-python">Elementos de Python</h2>
+<p>La aplicación está desarrollada en Python siguiendo un enfoque de programación orientada a objetos (OOP).</p>
+<p>La clase principal es <code>Lavadero</code>, que modela el comportamiento de un túnel
+de lavado de coches. En esta clase se utilizan los siguientes elementos de Python:</p>
+<ul>
+<li>Clases y encapsulación mediante atributos privados (<code>__atributo</code>)</li>
+<li>Métodos públicos y privados</li>
+<li>Propiedades (<code>@property</code>) para acceso controlado al estado interno</li>
+<li>Uso de excepciones (<code>ValueError</code>, <code>RuntimeError</code>)</li>
+<li>Constantes de clase para representar los estados (fases) del lavadero</li>
+</ul>
+<h3 id="clase-lavadero">Clase Lavadero</h3>
+<p>La clase <code>Lavadero</code> define las fases del lavado mediante constantes de clase,
+por ejemplo:</p>
+<pre><code class="language-python">FASE_INACTIVO = 0
+FASE_COBRANDO = 1
+FASE_PRELAVADO_MANO = 2
+FASE_ECHANDO_AGUA = 3
+FASE_ENJABONANDO = 4
+FASE_RODILLOS = 5
+FASE_SECADO_AUTOMATICO = 6
+FASE_SECADO_MANO = 7
+FASE_ENCERADO = 8
+</code></pre>
+<h3 id="metodos-principales">Métodos principales</h3>
+<ul>
+<li><code>hacerLavado()</code> -&gt; Inicia un ciclo de lavado y verifica las reglas del negocio de lavado de ropa.</li>
+<li><code>avanzarFase()</code> -&gt; Controla la transición entre las distintas fases.</li>
+<li><code>_cobrar()</code> -&gt; Calcula los ingresos del lavado según las opciones introducidas.</li>
+<li><code>terminar()</code> -&gt; Restablece el estado del lavadero al finalizar el proceso.</li>
+</ul>
+<hr />
+<h3 id="resultados-de-los-test-unitarios">Resultados de los test unitarios</h3>
+<p>Al final de las pruebas una vez desarrolladas ejecutaremos lo siguiente:</p>
+<pre><code class="language-bash">PYTHONPATH=src python3 test/test_lavadero_unittest.py -v
+</code></pre>
+<p>Y si todos los test están correctos en la terminal veremos los siguiente:</p>
+<pre><code class="language-bash">test10_flujo_con_prelavado (__main__.TestLavadero.test10_flujo_con_prelavado)
+Test 10: ... ok
+test11_flujo_con_secado_mano (__main__.TestLavadero.test11_flujo_con_secado_mano)
+Test 11: ... ok
+test12_flujo_completo (__main__.TestLavadero.test12_flujo_completo)
+Test 12: ... ok
+test13_flujo_prelavado_y_secado (__main__.TestLavadero.test13_flujo_prelavado_y_secado)
+Test 13: ... ok
+test14_flujo_completo_finalizacion (__main__.TestLavadero.test14_flujo_completo_finalizacion)
+Test 14: ... ok
+test1_estado_inicial_correcto (__main__.TestLavadero.test1_estado_inicial_correcto)
+Test 1: ... ok
+test2_excepcion_encerado_sin_secado (__main__.TestLavadero.test2_excepcion_encerado_sin_secado)
+Test 2: ... ok
+test3_no_se_puede_iniciar_dos_lavados (__main__.TestLavadero.test3_no_se_puede_iniciar_dos_lavados)
+Test 3: ... ok
+test4_ingresos_prelavado (__main__.TestLavadero.test4_ingresos_prelavado)
+Test 4: ... ok
+test5_ingresos_secado_mano (__main__.TestLavadero.test5_ingresos_secado_mano)
+Test 5: ... ok
+test6_ingresos_secado_y_encerado (__main__.TestLavadero.test6_ingresos_secado_y_encerado)
+Test 6: ... ok
+test7_ingresos_prelavado_y_secado (__main__.TestLavadero.test7_ingresos_prelavado_y_secado)
+Test 7: ... ok
+test8_ingresos_completo (__main__.TestLavadero.test8_ingresos_completo)
+Test 8: ... ok
+test9_flujo_rapido_sin_extras (__main__.TestLavadero.test9_flujo_rapido_sin_extras)
+Test 9: ... ok
+test_reseteo_estado_con_terminar (__main__.TestLavadero.test_reseteo_estado_con_terminar)
+Test: Verifica que terminar() resetea todas las flags y el estado. ... ok
+</code></pre>
+<hr />
+<h3 id="soluciones-de-codigo">Soluciones de código</h3>
+<ol>
+<li>Aplicar una tabulación en la declaración del método <code>ejecutar_y_obtener_fases</code>.</li>
+<li>Acceder a las propiedades privadas dentro del método <code>ejecutar_y_obtener_fases</code>: <ul>
+<li><code>prelavado</code></li>
+<li><code>secado_mano</code></li>
+<li><code>encerado</code></li>
+</ul>
+</li>
+<li>Todos verifican que los ingresos se calculan correctamente según las opciones seleccionadas. Ok tras mantener el método <code>_cobrar</code> 
+   y acceder a propiedades privadas correctamente.</li>
+</ol>
+<hr />
+<h3 id="requerimentstxt">requeriments.txt</h3>
+<p>En este proyecto no va a hacer falta instalar ciertos requerimientos ya que el <code>unittest</code> ya está incluido en <strong>Python</strong></p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js"></script>
+        <script src="search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2025-12-14 00:34:57.738912+00:00
+-->
