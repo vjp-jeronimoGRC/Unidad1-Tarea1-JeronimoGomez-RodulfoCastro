@@ -98,14 +98,10 @@ FASE_ENCERADO = 8
 <p>Para arrancar las pruebas en Sandboxing primero deberemos crear el entorno virtual con el siguiente comando:</p>
 <pre><code class="language-bash">python3 -m venv venv
 source venv/bin/activate
-
----
-### Resultados de los test unitarios
-
-Al final de las pruebas una vez desarrolladas ejecutaremos lo siguiente:
-
-```bash
-PYTHONPATH=src python3 test/test_lavadero_unittest.py -v
+</code></pre>
+<h3 id="resultados-de-los-test-unitarios">Resultados de los test unitarios</h3>
+<p>Al final de las pruebas una vez desarrolladas ejecutaremos lo siguiente:</p>
+<pre><code class="language-bash">PYTHONPATH=src python3 test/test_lavadero_unittest.py -v
 </code></pre>
 <p>Y si todos los test están correctos en la terminal veremos los siguiente:</p>
 <pre><code class="language-bash">test10_flujo_con_prelavado (__main__.TestLavadero.test10_flujo_con_prelavado)
@@ -142,16 +138,24 @@ Test: Verifica que terminar() resetea todas las flags y el estado. ... ok
 <hr />
 <h3 id="soluciones-de-codigo">Soluciones de código</h3>
 <ol>
-<li>Aplicar una tabulación en la declaración del método <code>ejecutar_y_obtener_fases</code>.</li>
-<li>Acceder a las propiedades privadas dentro del método <code>ejecutar_y_obtener_fases</code>: <ul>
+<li>
+<p>Aplicar una tabulación en la declaración del método <code>ejecutar_y_obtener_fases</code>.</p>
+</li>
+<li>
+<p>Acceder a las propiedades privadas dentro del método <code>ejecutar_y_obtener_fases</code>: </p>
+<ul>
 <li><code>prelavado</code></li>
 <li><code>secado_mano</code></li>
 <li><code>encerado</code></li>
 </ul>
 </li>
-<li>Todos verifican que los ingresos se calculan correctamente según las opciones seleccionadas. Ok tras mantener el método <code>_cobrar</code> 
-   y acceder a propiedades privadas correctamente.</li>
-<li>En el método cobrar se debe cambiar el orden de los cobros del lavado y debe quedar así:</li>
+<li>
+<p>Todos verifican que los ingresos se calculan correctamente según las opciones seleccionadas. Ok tras mantener el método <code>_cobrar</code> 
+   y acceder a propiedades privadas correctamente.</p>
+</li>
+<li>
+<p>En el método cobrar se debe cambiar el orden de los cobros del lavado y debe quedar así:</p>
+</li>
 </ol>
 <pre><code class="language-python">    if self.__prelavado_a_mano:
             coste_lavado += 1.50 
@@ -246,5 +250,5 @@ Test: Verifica que terminar() resetea todas las flags y el estado. ... ok
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2025-12-14 18:44:26.786073+00:00
+Build Date UTC : 2025-12-14 18:54:20.542940+00:00
 -->
