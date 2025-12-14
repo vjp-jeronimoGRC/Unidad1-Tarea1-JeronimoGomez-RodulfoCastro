@@ -28,8 +28,7 @@ class TestLavadero(unittest.TestCase):
         
     # ----------------------------------------------------------------------
     # TESTS  
-    # ----------------------------------------------------------------------
-    
+    # ----------------------------------------------------------------------    
     #---------------------------------------------------    
     # TEST 1
     #---------------------------------------------------
@@ -54,6 +53,9 @@ class TestLavadero(unittest.TestCase):
         # _hacer_lavado: (Prelavado: False, Secado a mano: False, Encerado: True)
         with self.assertRaises(ValueError):
             self.lavadero.hacerLavado(False, False, True)
+
+    # Desarrollo de los test
+    # Jerónimo
 
     # --------------------------------------------------
     # TEST 3
