@@ -34,9 +34,16 @@ FASE_ENCERADO = 8
 - `avanzarFase()` -> Controla la transición entre las distintas fases.
 - `_cobrar()` -> Calcula los ingresos del lavado según las opciones introducidas.
 - `terminar()` -> Restablece el estado del lavadero al finalizar el proceso.
+---
+### Sandboxing
+
+Para arrancar las pruebas en Sandboxing primero deberemos crear el entorno virtual con el siguiente comando:
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
 
 ---
-
 ### Resultados de los test unitarios
 
 Al final de las pruebas una vez desarrolladas ejecutaremos lo siguiente:
@@ -79,7 +86,6 @@ test_reseteo_estado_con_terminar (__main__.TestLavadero.test_reseteo_estado_con_
 Test: Verifica que terminar() resetea todas las flags y el estado. ... ok
 ```
 ---
-
 ### Soluciones de código 
 
 1. Aplicar una tabulación en la declaración del método `ejecutar_y_obtener_fases`.
@@ -89,9 +95,19 @@ Test: Verifica que terminar() resetea todas las flags y el estado. ... ok
 	- `encerado`
 3. Todos verifican que los ingresos se calculan correctamente según las opciones seleccionadas. Ok tras mantener el método `_cobrar` 
    y acceder a propiedades privadas correctamente.
+4. En el método cobrar se debe cambiar el orden de los cobros del lavado y debe quedar así:
+```python
+	if self.__prelavado_a_mano:
+            coste_lavado += 1.50 
+        
+        if self.__secado_a_mano:
+            coste_lavado += 1.00 
+            
+        if self.__encerado:
+            coste_lavado += 1.20
+```
 
 ---
-
 ### requeriments.txt
 
 En este proyecto no va a hacer falta instalar ciertos requerimientos ya que el `unittest` ya está incluido en **Python**
