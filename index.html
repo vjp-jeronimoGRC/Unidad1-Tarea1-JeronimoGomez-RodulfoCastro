@@ -94,9 +94,18 @@ FASE_ENCERADO = 8
 <li><code>terminar()</code> -&gt; Restablece el estado del lavadero al finalizar el proceso.</li>
 </ul>
 <hr />
-<h3 id="resultados-de-los-test-unitarios">Resultados de los test unitarios</h3>
-<p>Al final de las pruebas una vez desarrolladas ejecutaremos lo siguiente:</p>
-<pre><code class="language-bash">PYTHONPATH=src python3 test/test_lavadero_unittest.py -v
+<h3 id="sandboxing">Sandboxing</h3>
+<p>Para arrancar las pruebas en Sandboxing primero deberemos crear el entorno virtual con el siguiente comando:</p>
+<pre><code class="language-bash">python3 -m venv venv
+source venv/bin/activate
+
+---
+### Resultados de los test unitarios
+
+Al final de las pruebas una vez desarrolladas ejecutaremos lo siguiente:
+
+```bash
+PYTHONPATH=src python3 test/test_lavadero_unittest.py -v
 </code></pre>
 <p>Y si todos los test están correctos en la terminal veremos los siguiente:</p>
 <pre><code class="language-bash">test10_flujo_con_prelavado (__main__.TestLavadero.test10_flujo_con_prelavado)
@@ -142,7 +151,17 @@ Test: Verifica que terminar() resetea todas las flags y el estado. ... ok
 </li>
 <li>Todos verifican que los ingresos se calculan correctamente según las opciones seleccionadas. Ok tras mantener el método <code>_cobrar</code> 
    y acceder a propiedades privadas correctamente.</li>
+<li>En el método cobrar se debe cambiar el orden de los cobros del lavado y debe quedar así:</li>
 </ol>
+<pre><code class="language-python">    if self.__prelavado_a_mano:
+            coste_lavado += 1.50 
+
+        if self.__secado_a_mano:
+            coste_lavado += 1.00 
+
+        if self.__encerado:
+            coste_lavado += 1.20
+</code></pre>
 <hr />
 <h3 id="requerimentstxt">requeriments.txt</h3>
 <p>En este proyecto no va a hacer falta instalar ciertos requerimientos ya que el <code>unittest</code> ya está incluido en <strong>Python</strong></p></div>
@@ -227,5 +246,5 @@ Test: Verifica que terminar() resetea todas las flags y el estado. ... ok
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2025-12-14 00:34:57.738912+00:00
+Build Date UTC : 2025-12-14 18:03:58.938160+00:00
 -->
