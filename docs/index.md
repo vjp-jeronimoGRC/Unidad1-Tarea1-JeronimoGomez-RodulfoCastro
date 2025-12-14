@@ -42,8 +42,8 @@ Para arrancar las pruebas en Sandboxing primero deberemos crear el entorno virtu
 ```bash
 python3 -m venv venv
 source venv/bin/activate
+```
 
----
 ### Resultados de los test unitarios
 
 Al final de las pruebas una vez desarrolladas ejecutaremos lo siguiente:
@@ -89,12 +89,15 @@ Test: Verifica que terminar() resetea todas las flags y el estado. ... ok
 ### Soluciones de código 
 
 1. Aplicar una tabulación en la declaración del método `ejecutar_y_obtener_fases`.
+
 2. Acceder a las propiedades privadas dentro del método `ejecutar_y_obtener_fases`: 
 	- `prelavado`
 	- `secado_mano`
 	- `encerado`
+
 3. Todos verifican que los ingresos se calculan correctamente según las opciones seleccionadas. Ok tras mantener el método `_cobrar` 
    y acceder a propiedades privadas correctamente.
+
 4. En el método cobrar se debe cambiar el orden de los cobros del lavado y debe quedar así:
 ```python
 	if self.__prelavado_a_mano:
