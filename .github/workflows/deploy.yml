@@ -3,7 +3,7 @@ name: Deploy Documentation
 on:
   push:
     branches:
-      - main  # Cambia a 'master' si tu rama principal se llama así
+      - main
 
 jobs:
   deploy:
