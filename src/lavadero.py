@@ -87,6 +87,8 @@ class Lavadero:
         """
         coste_lavado = 5.00
         
+        #Jerónimo
+        # A este bloque de condiciones se le ha modificado los valores que se le añaden al coste_lavado
         if self.__prelavado_a_mano:
             coste_lavado += 1.50 
         
@@ -124,6 +126,8 @@ class Lavadero:
         elif self.__fase == self.FASE_ENJABONANDO:
             self.__fase = self.FASE_RODILLOS
         
+        #Jerónimo
+        #A este bloque de condiciones se le han añadido los bloques de if ... else ... de __secado_a_mano y __encerado  
         elif self.__fase == self.FASE_RODILLOS:
             if self.__secado_a_mano:
                 self.__fase = self.FASE_SECADO_MANO
@@ -175,7 +179,9 @@ class Lavadero:
         
     # Esta función es útil para pruebas unitarias, no es parte del lavadero real
     # nos crea un array con las fases visitadas en un ciclo completo
-
+    
+    # Jerónimo
+    # A este método se le ha añadido una tabulación  
     def ejecutar_y_obtener_fases(self, prelavado, secado, encerado):
         """Ejecuta un ciclo completo y devuelve la lista de fases visitadas."""
         self.hacerLavado(prelavado, secado, encerado)
