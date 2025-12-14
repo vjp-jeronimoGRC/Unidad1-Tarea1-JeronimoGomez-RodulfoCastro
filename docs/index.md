@@ -39,7 +39,7 @@ FASE_ENCERADO = 8
 
 Para arrancar las pruebas en Sandboxing primero deberemos crear el entorno virtual con el siguiente comando:
 
-```bash
+```
 python3 -m venv venv
 source venv/bin/activate
 ```
