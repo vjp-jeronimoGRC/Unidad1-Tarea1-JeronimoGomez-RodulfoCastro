@@ -48,8 +48,6 @@ Durante el desarrollo se corrigieron errores relacionados con:
 Las soluciones consistieron en mejorar la encapsulación y ajustar la lógica del
 método `avanzarFase()`.
 
-![Ejecución](./img/7.png)
-
 ---
 
 ## Pruebas
