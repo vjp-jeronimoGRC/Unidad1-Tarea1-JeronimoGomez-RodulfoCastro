@@ -1,6 +1,6 @@
 # Ejecución en SandBox
 
-En esta sección se documenta la ejecución de la aplicación `Lavadero` en un entorno seguro tipo SandBox.
+En esta sección se documenta la ejecución de los test en un entorno seguro tipo SandBox.
 
 ## Creación del entorno virtual
 
@@ -13,6 +13,6 @@ source venv/bin/activate
 
 ## Ejecución de la aplicación
 
-Ejecución de la aplicación desde la carpeta `src`.
+Ejecución de la aplicación desde la carpeta `test`.
 
-
+![Salida tests](img/test_salida.png)
