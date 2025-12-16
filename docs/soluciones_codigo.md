@@ -80,3 +80,8 @@ if self.__encerado:
     coste_lavado += 1.20
 ```
 
+## Problema 4: Falta el argumento encerado
+
+En el cuarto ejemplo de ejecución da error debido a que no se le pasa por parámetros la variable de encerado:
+
+![Solución problema 4](img/ejecucion_problema_4.png)
