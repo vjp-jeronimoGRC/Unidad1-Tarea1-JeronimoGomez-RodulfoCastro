@@ -27,7 +27,7 @@ class TestLavadero(unittest.TestCase):
         self.assertTrue(self.lavadero.ingresos > 0) # Los ingresos deben mantenerse
         
     # ----------------------------------------------------------------------
-    # TESTS  
+    # TESTS: Jerónimo
     # ----------------------------------------------------------------------    
     #---------------------------------------------------    
     # TEST 1

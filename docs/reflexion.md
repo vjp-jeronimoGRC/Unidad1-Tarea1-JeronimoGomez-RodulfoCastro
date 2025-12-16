@@ -1,9 +1,7 @@
 #Reflexión Final
 
-Durante la realización de esta práctica he podido profundizar en la programación orientada a objetos en Python, aplicando conceptos como encapsulación, propiedades, constantes de clase y manejo de excepciones.
+Durante la realización de esta tarea he aprendido a aplicar la programación orientada a objetos en Python de manera práctica, modelando un sistema real como un túnel de lavado de coches. La implementación de propiedades, métodos y el control de estados mediante constantes de clase me ha permitido comprender mejor la encapsulación y la gestión de atributos privados.
 
-Uno de los principales desafíos fue corregir y entender el flujo de fases del lavadero, especialmente al integrar las opciones de prelavado, secado a mano y encerado. Inicialmente, algunas pruebas unitarias fallaban porque los métodos no accedían correctamente a los atributos privados ni gestionaban todas las transiciones posibles. La corrección del método ejecutar_y_obtener_fases y la revisión del método _cobrar permitieron que todos los tests funcionaran correctamente.
+Además, la práctica de pruebas unitarias me ha enseñado la importancia de validar todas las posibles combinaciones de entradas y estados, asegurando que la lógica de negocio se cumple correctamente. La documentación y el uso de un notebook para comentar el código han reforzado la claridad y trazabilidad del proyecto, y la integración con MkDocs y GitHub Pages me ha dado experiencia en cómo presentar un proyecto de manera profesional y accesible.
 
-También aprendí la importancia de la documentación clara y de estructurar los archivos de manera que sea fácil de seguir, incluyendo el código comentado, la ejecución de pruebas y la ejecución en un entorno sandbox.
-
-Finalmente, esta práctica me ha permitido consolidar buenas prácticas de programación y testing, así como el uso de herramientas como MkDocs para documentar un proyecto de manera profesional y estructurada.
+En general, este ejercicio ha sido útil para consolidar conceptos de OOP, pruebas y documentación, y me ha permitido identificar y corregir errores en un flujo de desarrollo controlado

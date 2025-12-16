@@ -1,10 +1,9 @@
 # lavadero.py
 
+# Simula el estado y las operaciones de un túnel de lavado de coches.
+# Cumple con los requisitos de estado, avance de fase y reglas de negocio.
+
 class Lavadero:
-    """
-    Simula el estado y las operaciones de un túnel de lavado de coches.
-    Cumple con los requisitos de estado, avance de fase y reglas de negocio.
-    """
 
     FASE_INACTIVO = 0
     FASE_COBRANDO = 1
@@ -16,11 +15,9 @@ class Lavadero:
     FASE_SECADO_MANO = 7
     FASE_ENCERADO = 8
 
-    def __init__(self):
-        """
-        Constructor de la clase. Inicializa el lavadero.
-        Cumple con el requisito 1.
-        """
+    #Constructor de la clase. Inicializa el lavadero
+
+    def __init__(self):        
         self.__ingresos = 0.0
         self.__fase = self.FASE_INACTIVO
         self.__ocupado = False
@@ -28,6 +25,10 @@ class Lavadero:
         self.__secado_a_mano = False
         self.__encerado = False
         self.terminar() 
+
+
+    #  Propiedades de solo lectura de la clase Lavadero.
+    #  Estas propiedades permiten consultar el estado interno del lavadero (fase actual, ingresos acumulados, estado de ocupación y servicios adicionales seleccionados) sin acceder directamente a los atributos privados, respetando el principio de encapsulación.
 
     @property
     def fase(self):
@@ -53,20 +54,24 @@ class Lavadero:
     def encerado(self):
         return self.__encerado
 
+    # Finaliza el ciclo de lavado y restablece el estado interno del lavadero.
+    # Este método devuelve el lavadero a su estado inicial, marcándolo como inactivo y liberándolo para un nuevo servicio, 
+    # además de limpiar todas las opciones de lavado seleccionadas.
+
     def terminar(self):
         self.__fase = self.FASE_INACTIVO
         self.__ocupado = False
         self.__prelavado_a_mano = False
         self.__secado_a_mano = False
         self.__encerado = False
-    
-    def hacerLavado(self, prelavado_a_mano, secado_a_mano, encerado):
-        """
-        Inicia un nuevo ciclo de lavado, validando reglas de negocio.
+
+    # Inicia un nuevo ciclo de lavado, validando reglas de negocio.
         
-        :raises RuntimeError: Si el lavadero está ocupado (Requisito 3).
-        :raises ValueError: Si se intenta encerar sin secado a mano (Requisito 2).
-        """
+    # :raises RuntimeError: Si el lavadero está ocupado (Requisito 3).
+    # :raises ValueError: Si se intenta encerar sin secado a mano (Requisito 2).
+
+    def hacerLavado(self, prelavado_a_mano, secado_a_mano, encerado):
+        
         if self.__ocupado:
             raise RuntimeError("No se puede iniciar un nuevo lavado mientras el lavadero está ocupado")
         
@@ -79,15 +84,12 @@ class Lavadero:
         self.__secado_a_mano = secado_a_mano
         self.__encerado = encerado
         
+    # Calcula y añade los ingresos según las opciones seleccionadas (Requisitos 4-8).
+    # Precio base: 5.00€ (Implícito, 5.00€ de base + 1.50€ de prelavado + 1.00€ de secado + 1.20€ de encerado = 8.70€)
 
     def _cobrar(self):
-        """
-        Calcula y añade los ingresos según las opciones seleccionadas (Requisitos 4-8).
-        Precio base: 5.00€ (Implícito, 5.00€ de base + 1.50€ de prelavado + 1.00€ de secado + 1.20€ de encerado = 8.70€)
-        """
         coste_lavado = 5.00
         
-        #Jerónimo
         # A este bloque de condiciones se le ha modificado los valores que se le añaden al coste_lavado
         if self.__prelavado_a_mano:
             coste_lavado += 1.50 
@@ -100,6 +102,16 @@ class Lavadero:
             
         self.__ingresos += coste_lavado
         return coste_lavado
+
+
+    # Gestiona la transición entre las distintas fases del túnel de lavado.
+
+    # El método avanza el estado interno del lavadero en función de la fase actual y de las opciones 
+    # seleccionadas por el usuario (prelavado a mano, secado a mano y encerado).
+
+    # Durante el desarrollo se corrigió la lógica de transición desde la fase de rodillos, 
+    # añadiendo condiciones para contemplar correctamente los flujos con secado manual y encerado, 
+    # evitando saltos incorrectos de fase y garantizando la finalización correcta del ciclo.
 
     def avanzarFase(self):
        
@@ -126,7 +138,6 @@ class Lavadero:
         elif self.__fase == self.FASE_ENJABONANDO:
             self.__fase = self.FASE_RODILLOS
         
-        #Jerónimo
         #A este bloque de condiciones se le han añadido los bloques de if ... else ... de __secado_a_mano y __encerado  
         elif self.__fase == self.FASE_RODILLOS:
             if self.__secado_a_mano:
@@ -150,6 +161,10 @@ class Lavadero:
         else:
             raise RuntimeError(f"Estado no válido: Fase {self.__fase}. El lavadero va a estallar...")
 
+    # Muestra en pantalla la descripción de la fase actual del lavadero.
+
+    # Se utiliza un diccionario fases_map que relaciona los códigos internos de fase con su descripción en texto legible. 
+    # En caso de que la fase no coincida con ninguna definida, se imprime un mensaje indicando un estado no válido
 
     def imprimir_fase(self):
         fases_map = {
@@ -165,6 +180,16 @@ class Lavadero:
         }
         print(fases_map.get(self.__fase, f"{self.__fase} - En estado no válido"), end="")
 
+    # Muestra en pantalla el estado completo del lavadero.
+
+    # Se incluyen:
+
+    #    Ingresos acumulados
+    #    Estado de ocupado/no ocupado
+    #    Opciones activas (prelavado, secado a mano, encerado)
+    #    Fase actual (usando imprimir_fase())
+
+    # Permite tener una visión rápida de todo el estado interno del lavadero.
 
     def imprimir_estado(self):
         print("----------------------------------------")
@@ -180,7 +205,6 @@ class Lavadero:
     # Esta función es útil para pruebas unitarias, no es parte del lavadero real
     # nos crea un array con las fases visitadas en un ciclo completo
     
-    # Jerónimo
     # A este método se le ha añadido una tabulación  
     def ejecutar_y_obtener_fases(self, prelavado, secado, encerado):
         """Ejecuta un ciclo completo y devuelve la lista de fases visitadas."""
