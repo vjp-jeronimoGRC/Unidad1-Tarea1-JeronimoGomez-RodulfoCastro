@@ -4,27 +4,27 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Documentación del proyecto de simulación de un túnel de lavado de coches con tests unitarios.">
+        
         <meta name="author" content="Tu Nombre">
-        <link rel="canonical" href="http://localhost:8000/">
-        <link rel="shortcut icon" href="img/favicon.ico">
-        <title>Simulación Lavadero de Coches - Tarea Obligatoria 1</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/fontawesome.min.css" rel="stylesheet">
-        <link href="css/brands.min.css" rel="stylesheet">
-        <link href="css/solid.min.css" rel="stylesheet">
-        <link href="css/v4-font-face.min.css" rel="stylesheet">
-        <link href="css/base.css" rel="stylesheet">
+        <link rel="canonical" href="http://localhost:8000/ejecucion_depuracion/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Ejecución y Depuración - Simulación Lavadero de Coches - Tarea Obligatoria 1</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
         <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
         <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
         <script>hljs.highlightAll();</script> 
     </head>
 
-    <body class="homepage">
+    <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href=".">Simulación Lavadero de Coches - Tarea Obligatoria 1</a>
+                <a class="navbar-brand" href="..">Simulación Lavadero de Coches - Tarea Obligatoria 1</a>
 
                 <!-- Expanded navigation -->
                 <div id="navbar-collapse" class="navbar-collapse collapse">
@@ -53,8 +53,20 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="2"><a href="#elementos-de-python" class="nav-link">Elementos de Python</a>
+            <li class="nav-item" data-bs-level="1"><a href="#ejecucion-y-depuracion" class="nav-link">Ejecución y Depuración</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#ejecucion-de-la-aplicacion" class="nav-link">Ejecución de la aplicación</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#problemas-detectados-y-soluciones" class="nav-link">Problemas detectados y soluciones</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#resultados-de-los-test" class="nav-link">Resultados de los test</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -62,48 +74,54 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="elementos-de-python">Elementos de Python</h2>
-<p>La aplicación está desarrollada en Python siguiendo un enfoque de programación orientada a objetos (OOP).</p>
-<p>La clase principal es <code>Lavadero</code>, que modela el comportamiento de un túnel
-de lavado de coches. En esta clase se utilizan los siguientes elementos de Python:</p>
-<ul>
-<li>Clases y encapsulación mediante atributos privados (<code>__atributo</code>)</li>
-<li>Métodos públicos y privados</li>
-<li>Propiedades (<code>@property</code>) para acceso controlado al estado interno</li>
-<li>Uso de excepciones (<code>ValueError</code>, <code>RuntimeError</code>)</li>
-<li>Constantes de clase para representar los estados (fases) del lavadero</li>
-</ul>
-<h3 id="clase-lavadero">Clase Lavadero</h3>
-<p>La clase <code>Lavadero</code> define las fases del lavado mediante constantes de clase,
-por ejemplo:</p>
-<pre><code class="language-python">FASE_INACTIVO = 0
-FASE_COBRANDO = 1
-FASE_PRELAVADO_MANO = 2
-FASE_ECHANDO_AGUA = 3
-FASE_ENJABONANDO = 4
-FASE_RODILLOS = 5
-FASE_SECADO_AUTOMATICO = 6
-FASE_SECADO_MANO = 7
-FASE_ENCERADO = 8
-</code></pre>
-<h3 id="metodos-principales">Métodos principales</h3>
-<ul>
-<li><code>hacerLavado()</code> -&gt; Inicia un ciclo de lavado y verifica las reglas del negocio de lavado de ropa.</li>
-<li><code>avanzarFase()</code> -&gt; Controla la transición entre las distintas fases.</li>
-<li><code>_cobrar()</code> -&gt; Calcula los ingresos del lavado según las opciones introducidas.</li>
-<li><code>terminar()</code> -&gt; Restablece el estado del lavadero al finalizar el proceso.</li>
-</ul>
-<hr />
-<h3 id="sandboxing">Sandboxing</h3>
-<p>Para arrancar las pruebas en Sandboxing primero deberemos crear el entorno virtual con el siguiente comando:</p>
-<pre><code>python3 -m venv venv
+<h1 id="ejecucion-y-depuracion">Ejecución y Depuración</h1>
+<p>En esta sección se documenta la ejecución de la aplicación, los problemas detectados y las soluciones aplicadas.</p>
+<h2 id="ejecucion-de-la-aplicacion">Ejecución de la aplicación</h2>
+<p>Para ejecutar la aplicación en un entorno local:</p>
+<ol>
+<li>Crear un entorno virtual:</li>
+</ol>
+<pre><code class="language-bash">python3 -m venv venv
 source venv/bin/activate
 </code></pre>
-<h3 id="resultados-de-los-test-unitarios">Resultados de los test unitarios</h3>
-<p>Al final de las pruebas una vez desarrolladas ejecutaremos lo siguiente:</p>
+<ol>
+<li>Ejecutar tests unitarios:</li>
+</ol>
 <pre><code class="language-bash">PYTHONPATH=src python3 test/test_lavadero_unittest.py -v
 </code></pre>
-<p>Y si todos los test están correctos en la terminal veremos los siguiente:</p>
+<hr />
+<h2 id="problemas-detectados-y-soluciones">Problemas detectados y soluciones</h2>
+<ol>
+<li>Método <code>ejecutar_y_obtener_fases</code> no tabulado:</li>
+</ol>
+<p><strong>Problema</strong>: Al principio el método no estaba correctamente indentado dentro de la clase Lavadero.</p>
+<p><strong>Solución</strong>: Se corrigió la indentación para que el método formara parte de la clase.</p>
+<ol>
+<li>Acceso a atributos privados:</li>
+</ol>
+<p><strong>Problema</strong>: El método <code>ejecutar_y_obtener_fases</code> accedía a self.fase y self.ocupado directamente, provocando errores en los tests.</p>
+<p><strong>Solución</strong>: Se cambió el acceso a <code>self.__fase</code> y <code>self.__ocupado</code> dentro del método.</p>
+<ol>
+<li>Orden de cálculo de <code>_cobrar()</code>:</li>
+</ol>
+<p><strong>Problema</strong>: Los ingresos se calculaban en un orden incorrecto, afectando los tests de ingresos.</p>
+<p><strong>Solución</strong>: Se reordenó la suma de costes según las opciones seleccionadas:</p>
+<pre><code class="language-python">if self.__prelavado_a_mano:
+    coste_lavado += 1.50 
+
+if self.__secado_a_mano:
+    coste_lavado += 1.00 
+
+if self.__encerado:
+    coste_lavado += 1.20
+</code></pre>
+<ol>
+<li>Manejo de fases de secado y encerado</li>
+</ol>
+<p><strong>Problema</strong>: No se consideraban correctamente los bloques __secado_a_mano y __encerado al avanzar fases.</p>
+<p><strong>Solución</strong>: Se añadieron condiciones if ... else ... en el bloque de avanzarFase para manejar todos los flujos correctamente.</p>
+<hr />
+<h2 id="resultados-de-los-test">Resultados de los test</h2>
 <pre><code class="language-bash">test10_flujo_con_prelavado (__main__.TestLavadero.test10_flujo_con_prelavado)
 Test 10: ... ok
 test11_flujo_con_secado_mano (__main__.TestLavadero.test11_flujo_con_secado_mano)
@@ -134,41 +152,7 @@ test9_flujo_rapido_sin_extras (__main__.TestLavadero.test9_flujo_rapido_sin_extr
 Test 9: ... ok
 test_reseteo_estado_con_terminar (__main__.TestLavadero.test_reseteo_estado_con_terminar)
 Test: Verifica que terminar() resetea todas las flags y el estado. ... ok
-</code></pre>
-<hr />
-<h3 id="soluciones-de-codigo">Soluciones de código</h3>
-<ol>
-<li>
-<p>Aplicar una tabulación en la declaración del método <code>ejecutar_y_obtener_fases</code>.</p>
-</li>
-<li>
-<p>Acceder a las propiedades privadas dentro del método <code>ejecutar_y_obtener_fases</code>: </p>
-<ul>
-<li><code>prelavado</code></li>
-<li><code>secado_mano</code></li>
-<li><code>encerado</code></li>
-</ul>
-</li>
-<li>
-<p>Todos verifican que los ingresos se calculan correctamente según las opciones seleccionadas. Ok tras mantener el método <code>_cobrar</code> 
-   y acceder a propiedades privadas correctamente.</p>
-</li>
-<li>
-<p>En el método cobrar se debe cambiar el orden de los cobros del lavado y debe quedar así:</p>
-</li>
-</ol>
-<pre><code class="language-python">    if self.__prelavado_a_mano:
-            coste_lavado += 1.50 
-
-        if self.__secado_a_mano:
-            coste_lavado += 1.00 
-
-        if self.__encerado:
-            coste_lavado += 1.20
-</code></pre>
-<hr />
-<h3 id="requerimentstxt">requeriments.txt</h3>
-<p>En este proyecto no va a hacer falta instalar ciertos requerimientos ya que el <code>unittest</code> ya está incluido en <strong>Python</strong></p></div>
+</code></pre></div>
             </div>
         </div>
 
@@ -176,13 +160,13 @@ Test: Verifica que terminar() resetea todas las flags y el estado. ... ok
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
-        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="../js/bootstrap.bundle.min.js"></script>
         <script>
-            var base_url = ".",
+            var base_url = "..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="js/base.js"></script>
-        <script src="search/main.js"></script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -247,8 +231,3 @@ Test: Verifica que terminar() resetea todas las flags y el estado. ... ok
 
     </body>
 </html>
-
-<!--
-MkDocs version : 1.6.1
-Build Date UTC : 2025-12-16 20:36:31.753099+00:00
--->
