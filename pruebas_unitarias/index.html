@@ -8,7 +8,7 @@
         <meta name="author" content="Tu Nombre">
         <link rel="canonical" href="http://localhost:8000/pruebas_unitarias/">
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Pruebas unitarias - Simulación Lavadero de Coches - Tarea Obligatoria 1</title>
+        <title>Pruebas Unitarias - Simulación Lavadero de Coches - Tarea Obligatoria 1</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/fontawesome.min.css" rel="stylesheet">
         <link href="../css/brands.min.css" rel="stylesheet">
@@ -52,12 +52,83 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#pruebas-unitarias" class="nav-link">Pruebas Unitarias</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#objetivo" class="nav-link">Objetivo</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#conjunto-de-pruebas" class="nav-link">Conjunto de pruebas</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#ejemplos-de-test-dados-en-un-principio" class="nav-link">Ejemplos de test dados en un principio</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#explicacion-breve-de-los-test" class="nav-link">Explicación breve de los test</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-</div>
+<h1 id="pruebas-unitarias">Pruebas Unitarias</h1>
+<p>En esta sección se documentan las pruebas realizadas sobre la clase <code>Lavadero</code> y sus métodos.</p>
+<h2 id="objetivo">Objetivo</h2>
+<p>Verificar que la clase <code>Lavadero</code> cumple con los requisitos de negocio:</p>
+<ul>
+<li>Estados y transiciones de fases correctas.</li>
+<li>Cálculo de ingresos según opciones seleccionadas.</li>
+<li>Prevención de errores (encerar sin secado, iniciar lavado cuando el lavadero está ocupado, etc.).</li>
+</ul>
+<h2 id="conjunto-de-pruebas">Conjunto de pruebas</h2>
+<p>Se utilizaron tests unitarios con <code>unittest</code>. El comando para ejecutar todos los tests:</p>
+<pre><code class="language-bash">PYTHONPATH=src python3 test/test_lavadero_unittest.py -v
+</code></pre>
+<h2 id="ejemplos-de-test-dados-en-un-principio">Ejemplos de test dados en un principio</h2>
+<ol>
+<li>Estado inicial correcto</li>
+</ol>
+<pre><code class="language-python">def test1_estado_inicial_correcto(self):
+    self.assertFalse(self.lavadero.ocupado)
+    self.assertEqual(self.lavadero.fase, self.lavadero.FASE_INACTIVO)
+    self.assertEqual(self.lavadero.ingresos, 0)
+</code></pre>
+<ol>
+<li>Excepción al intentar encerar sin secado</li>
+</ol>
+<pre><code class="language-python">def test2_excepcion_encerado_sin_secado(self):
+    with self.assertRaises(ValueError):
+        self.lavadero.hacerLavado(prelavado_a_mano=False, secado_a_mano=False, encerado=True)
+</code></pre>
+<p>A partir de hay se empieza a crear el resto de tests unitarios.</p>
+<h2 id="explicacion-breve-de-los-test">Explicación breve de los test</h2>
+<ul>
+<li>
+<p><strong>test1_estado_inicial_correcto:</strong> Verifica que el lavadero inicia en estado Inactivo con ingresos 0.</p>
+</li>
+<li>
+<p><strong>test2_excepcion_encerado_sin_secado:</strong> Comprueba que encerar sin secado a mano lanza <code>ValueError</code>.</p>
+</li>
+<li>
+<p><strong>test3_no_se_puede_iniciar_dos_lavados:</strong> Evita iniciar un lavado si el lavadero ya está ocupado (<code>RuntimeError</code>).</p>
+</li>
+<li>
+<p><strong>test4 a test8:</strong> Comprueban el cálculo de ingresos según las opciones seleccionadas (prelavado, secado, encerado).</p>
+</li>
+<li>
+<p><strong>test9 a test14:</strong> Simulan los flujos completos del lavado, incluyendo combinaciones de prelavado, secado a mano y encerado.</p>
+</li>
+<li>
+<p><strong>test_reseteo_estado_con_terminar:</strong> Verifica que <code>terminar()</code> restablece todas las flags y el estado del lavadero.</p>
+</li>
+</ul></div>
             </div>
         </div>
 

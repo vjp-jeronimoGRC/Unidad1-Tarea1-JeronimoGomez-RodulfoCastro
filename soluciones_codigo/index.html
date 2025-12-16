@@ -8,7 +8,7 @@
         <meta name="author" content="Tu Nombre">
         <link rel="canonical" href="http://localhost:8000/soluciones_codigo/">
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Soluciones codigo - Simulación Lavadero de Coches - Tarea Obligatoria 1</title>
+        <title>Soluciones de Código - Simulación Lavadero de Coches - Tarea Obligatoria 1</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/fontawesome.min.css" rel="stylesheet">
         <link href="../css/brands.min.css" rel="stylesheet">
@@ -52,12 +52,84 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#soluciones-de-codigo" class="nav-link">Soluciones de Código</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#problema-1-metodo-ejecutar_y_obtener_fases" class="nav-link">Problema 1: Método ejecutar_y_obtener_fases</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#problema-2-acceso-a-atributos-privados" class="nav-link">Problema 2: Acceso a atributos privados</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#problema-3-metodo-_cobrar" class="nav-link">Problema 3: Método _cobrar</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-</div>
+<h1 id="soluciones-de-codigo">Soluciones de Código</h1>
+<p>En esta sección se documentan los problemas detectados en el código fuente de la clase <code>Lavadero</code> y las soluciones aplicadas.</p>
+<h2 id="problema-1-metodo-ejecutar_y_obtener_fases">Problema 1: Método <code>ejecutar_y_obtener_fases</code></h2>
+<p><strong>Situación inicial:</strong></p>
+<p>El método no estaba correctamente indentado ni accedía a los atributos privados de la clase:</p>
+<pre><code class="language-python">def ejecutar_y_obtener_fases(self, prelavado, secado, encerado):
+self.hacerLavado(prelavado, secado, encerado)
+fases_visitadas = [self.fase]
+while self.ocupado:
+    self.avanzarFase()
+    fases_visitadas.append(self.fase)
+return fases_visitadas
+</code></pre>
+<h3 id="solucion-aplicada">Solución aplicada:</h3>
+<p>Se corrigió la indentación.</p>
+<p>Se accede a los atributos privados usando <code>self.__fase</code> y <code>self.__ocupado</code>.</p>
+<pre><code>def ejecutar_y_obtener_fases(self, prelavado, secado, encerado):
+    &quot;&quot;&quot;Ejecuta un ciclo completo y devuelve la lista de fases visitadas.&quot;&quot;&quot;
+    self.hacerLavado(prelavado, secado, encerado)
+    fases_visitadas = [self.__fase]
+
+    while self.__ocupado:
+        if len(fases_visitadas) &gt; 15:
+            raise Exception(&quot;Bucle infinito detectado en la simulación de fases.&quot;)
+        self.avanzarFase()
+        fases_visitadas.append(self.__fase)
+
+    return fases_visitadas
+</code></pre>
+<h2 id="problema-2-acceso-a-atributos-privados">Problema 2: Acceso a atributos privados</h2>
+<p><strong>Situación inicial:</strong></p>
+<p>Los tests fallaban porque los métodos de prueba intentaban acceder a self.fase y self.ocupado directamente.</p>
+<h3 id="solucion-aplicada_1">Solución aplicada:</h3>
+<p>Se añadieron @property para exponer de manera controlada los atributos privados:</p>
+<pre><code class="language-python">@property
+def fase(self):
+    return self.__fase
+
+@property
+def ocupado(self):
+    return self.__ocupado
+</code></pre>
+<h2 id="problema-3-metodo-_cobrar">Problema 3: Método _cobrar</h2>
+<p><strong>Situación inicial:</strong></p>
+<p>El cálculo de ingresos no estaba en el orden correcto y provocaba resultados inconsistentes en algunos tests.</p>
+<h3 id="solucion-aplicada_2">Solución aplicada:</h3>
+<p>Se reorganizó el orden de los cobros según las opciones seleccionadas:</p>
+<pre><code class="language-python">if self.__prelavado_a_mano:
+    coste_lavado += 1.50 
+
+if self.__secado_a_mano:
+    coste_lavado += 1.00 
+
+if self.__encerado:
+    coste_lavado += 1.20
+</code></pre></div>
             </div>
         </div>
 

@@ -53,8 +53,12 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="2"><a href="#elementos-de-python" class="nav-link">Elementos de Python</a>
+            <li class="nav-item" data-bs-level="1"><a href="#documentacion-de-la-tarea-1-unidad-1" class="nav-link">Documentación de la Tarea 1 - Unidad 1</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#indice-de-la-documentacion" class="nav-link">Índice de la documentación</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -62,113 +66,32 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="elementos-de-python">Elementos de Python</h2>
-<p>La aplicación está desarrollada en Python siguiendo un enfoque de programación orientada a objetos (OOP).</p>
-<p>La clase principal es <code>Lavadero</code>, que modela el comportamiento de un túnel
-de lavado de coches. En esta clase se utilizan los siguientes elementos de Python:</p>
-<ul>
-<li>Clases y encapsulación mediante atributos privados (<code>__atributo</code>)</li>
-<li>Métodos públicos y privados</li>
-<li>Propiedades (<code>@property</code>) para acceso controlado al estado interno</li>
-<li>Uso de excepciones (<code>ValueError</code>, <code>RuntimeError</code>)</li>
-<li>Constantes de clase para representar los estados (fases) del lavadero</li>
-</ul>
-<h3 id="clase-lavadero">Clase Lavadero</h3>
-<p>La clase <code>Lavadero</code> define las fases del lavado mediante constantes de clase,
-por ejemplo:</p>
-<pre><code class="language-python">FASE_INACTIVO = 0
-FASE_COBRANDO = 1
-FASE_PRELAVADO_MANO = 2
-FASE_ECHANDO_AGUA = 3
-FASE_ENJABONANDO = 4
-FASE_RODILLOS = 5
-FASE_SECADO_AUTOMATICO = 6
-FASE_SECADO_MANO = 7
-FASE_ENCERADO = 8
-</code></pre>
-<h3 id="metodos-principales">Métodos principales</h3>
-<ul>
-<li><code>hacerLavado()</code> -&gt; Inicia un ciclo de lavado y verifica las reglas del negocio de lavado de ropa.</li>
-<li><code>avanzarFase()</code> -&gt; Controla la transición entre las distintas fases.</li>
-<li><code>_cobrar()</code> -&gt; Calcula los ingresos del lavado según las opciones introducidas.</li>
-<li><code>terminar()</code> -&gt; Restablece el estado del lavadero al finalizar el proceso.</li>
-</ul>
-<hr />
-<h3 id="sandboxing">Sandboxing</h3>
-<p>Para arrancar las pruebas en Sandboxing primero deberemos crear el entorno virtual con el siguiente comando:</p>
-<pre><code>python3 -m venv venv
-source venv/bin/activate
-</code></pre>
-<h3 id="resultados-de-los-test-unitarios">Resultados de los test unitarios</h3>
-<p>Al final de las pruebas una vez desarrolladas ejecutaremos lo siguiente:</p>
-<pre><code class="language-bash">PYTHONPATH=src python3 test/test_lavadero_unittest.py -v
-</code></pre>
-<p>Y si todos los test están correctos en la terminal veremos los siguiente:</p>
-<pre><code class="language-bash">test10_flujo_con_prelavado (__main__.TestLavadero.test10_flujo_con_prelavado)
-Test 10: ... ok
-test11_flujo_con_secado_mano (__main__.TestLavadero.test11_flujo_con_secado_mano)
-Test 11: ... ok
-test12_flujo_completo (__main__.TestLavadero.test12_flujo_completo)
-Test 12: ... ok
-test13_flujo_prelavado_y_secado (__main__.TestLavadero.test13_flujo_prelavado_y_secado)
-Test 13: ... ok
-test14_flujo_completo_finalizacion (__main__.TestLavadero.test14_flujo_completo_finalizacion)
-Test 14: ... ok
-test1_estado_inicial_correcto (__main__.TestLavadero.test1_estado_inicial_correcto)
-Test 1: ... ok
-test2_excepcion_encerado_sin_secado (__main__.TestLavadero.test2_excepcion_encerado_sin_secado)
-Test 2: ... ok
-test3_no_se_puede_iniciar_dos_lavados (__main__.TestLavadero.test3_no_se_puede_iniciar_dos_lavados)
-Test 3: ... ok
-test4_ingresos_prelavado (__main__.TestLavadero.test4_ingresos_prelavado)
-Test 4: ... ok
-test5_ingresos_secado_mano (__main__.TestLavadero.test5_ingresos_secado_mano)
-Test 5: ... ok
-test6_ingresos_secado_y_encerado (__main__.TestLavadero.test6_ingresos_secado_y_encerado)
-Test 6: ... ok
-test7_ingresos_prelavado_y_secado (__main__.TestLavadero.test7_ingresos_prelavado_y_secado)
-Test 7: ... ok
-test8_ingresos_completo (__main__.TestLavadero.test8_ingresos_completo)
-Test 8: ... ok
-test9_flujo_rapido_sin_extras (__main__.TestLavadero.test9_flujo_rapido_sin_extras)
-Test 9: ... ok
-test_reseteo_estado_con_terminar (__main__.TestLavadero.test_reseteo_estado_con_terminar)
-Test: Verifica que terminar() resetea todas las flags y el estado. ... ok
-</code></pre>
-<hr />
-<h3 id="soluciones-de-codigo">Soluciones de código</h3>
+<h1 id="documentacion-de-la-tarea-1-unidad-1">Documentación de la Tarea 1 - Unidad 1</h1>
+<p>Bienvenido a la documentación del proyecto del <strong>Lavadero de Coches</strong> desarrollado en Python.<br />
+Aquí encontrarás todos los apartados requeridos en la tarea, organizados de manera clara y accesible.</p>
+<h2 id="indice-de-la-documentacion">Índice de la documentación</h2>
 <ol>
 <li>
-<p>Aplicar una tabulación en la declaración del método <code>ejecutar_y_obtener_fases</code>.</p>
+<p><a href="elementos_python/">Elementos de Python</a><br />
+   Explicación de los conceptos de Python utilizados, clases, propiedades, constantes y excepciones.</p>
 </li>
 <li>
-<p>Acceder a las propiedades privadas dentro del método <code>ejecutar_y_obtener_fases</code>: </p>
-<ul>
-<li><code>prelavado</code></li>
-<li><code>secado_mano</code></li>
-<li><code>encerado</code></li>
-</ul>
+<p><a href="pruebas_unitarias/">Pruebas Unitarias</a><br />
+   Detalle de los tests realizados, cómo se ejecutan y los resultados obtenidos.</p>
 </li>
 <li>
-<p>Todos verifican que los ingresos se calculan correctamente según las opciones seleccionadas. Ok tras mantener el método <code>_cobrar</code> 
-   y acceder a propiedades privadas correctamente.</p>
+<p><a href="sandbox/">Ejecución en Sandbox</a><br />
+   Explicación del entorno virtual y del proceso de ejecución de la aplicación en un entorno controlado.</p>
 </li>
 <li>
-<p>En el método cobrar se debe cambiar el orden de los cobros del lavado y debe quedar así:</p>
+<p><a href="soluciones_codigo/">Soluciones de Código</a><br />
+   Descripción de los problemas encontrados en el código original y cómo fueron solucionados.</p>
 </li>
-</ol>
-<pre><code class="language-python">    if self.__prelavado_a_mano:
-            coste_lavado += 1.50 
-
-        if self.__secado_a_mano:
-            coste_lavado += 1.00 
-
-        if self.__encerado:
-            coste_lavado += 1.20
-</code></pre>
-<hr />
-<h3 id="requerimentstxt">requeriments.txt</h3>
-<p>En este proyecto no va a hacer falta instalar ciertos requerimientos ya que el <code>unittest</code> ya está incluido en <strong>Python</strong></p></div>
+<li>
+<p><a href="reflexion/">Reflexión Final</a><br />
+   Reflexión sobre los aprendizajes y dificultades enfrentadas durante la realización de la práctica.</p>
+</li>
+</ol></div>
             </div>
         </div>
 
@@ -250,5 +173,5 @@ Test: Verifica que terminar() resetea todas las flags y el estado. ... ok
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2025-12-16 20:36:31.753099+00:00
+Build Date UTC : 2025-12-16 21:05:44.761849+00:00
 -->

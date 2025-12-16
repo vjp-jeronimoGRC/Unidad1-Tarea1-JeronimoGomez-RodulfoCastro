@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <meta name="author" content="Tu Nombre">
-        <link rel="canonical" href="http://localhost:8000/sandbox/">
+        <link rel="canonical" href="http://localhost:8000/reflexion/">
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Ejecución en SandBox - Simulación Lavadero de Coches - Tarea Obligatoria 1</title>
+        <title>Reflexión Final - Simulación Lavadero de Coches - Tarea Obligatoria 1</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/fontawesome.min.css" rel="stylesheet">
         <link href="../css/brands.min.css" rel="stylesheet">
@@ -53,16 +53,8 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#ejecucion-en-sandbox" class="nav-link">Ejecución en SandBox</a>
+            <li class="nav-item" data-bs-level="1"><a href="#reflexion-final" class="nav-link">Reflexión Final</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#creacion-del-entorno-virtual" class="nav-link">Creación del entorno virtual</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#ejecucion-de-la-aplicacion" class="nav-link">Ejecución de la aplicación</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
         </ul>
@@ -70,15 +62,11 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="ejecucion-en-sandbox">Ejecución en SandBox</h1>
-<p>En esta sección se documenta la ejecución de la aplicación <code>Lavadero</code> en un entorno seguro tipo SandBox.</p>
-<h2 id="creacion-del-entorno-virtual">Creación del entorno virtual</h2>
-<p>Se creó un entorno virtual para aislar las dependencias:</p>
-<pre><code class="language-bash">python3 -m venv venv
-source venv/bin/activate
-</code></pre>
-<h2 id="ejecucion-de-la-aplicacion">Ejecución de la aplicación</h2>
-<p>Ejecución de la aplicación desde la carpeta <code>src</code>.</p></div>
+<h1 id="reflexion-final">Reflexión Final</h1>
+<p>Durante la realización de esta práctica he podido profundizar en la programación orientada a objetos en Python, aplicando conceptos como encapsulación, propiedades, constantes de clase y manejo de excepciones.</p>
+<p>Uno de los principales desafíos fue corregir y entender el flujo de fases del lavadero, especialmente al integrar las opciones de prelavado, secado a mano y encerado. Inicialmente, algunas pruebas unitarias fallaban porque los métodos no accedían correctamente a los atributos privados ni gestionaban todas las transiciones posibles. La corrección del método ejecutar_y_obtener_fases y la revisión del método _cobrar permitieron que todos los tests funcionaran correctamente.</p>
+<p>También aprendí la importancia de la documentación clara y de estructurar los archivos de manera que sea fácil de seguir, incluyendo el código comentado, la ejecución de pruebas y la ejecución en un entorno sandbox.</p>
+<p>Finalmente, esta práctica me ha permitido consolidar buenas prácticas de programación y testing, así como el uso de herramientas como MkDocs para documentar un proyecto de manera profesional y estructurada.</p></div>
             </div>
         </div>
 
