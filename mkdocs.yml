@@ -1,7 +1,7 @@
 site_name: Simulación Lavadero de Coches - Tarea Obligatoria 1
 site_url: http://localhost:8000
 site_description: Documentación del proyecto de simulación de un túnel de lavado de coches con tests unitarios.
-site_author: Tu Nombre
+site_author: Jerónimo
 
 docs_dir: docs
 
@@ -9,3 +9,18 @@ site_dir: site
 
 nav:
   - Introducción: index.md
+  - "Elementos de Python": elementos_python.md
+  - "Pruebas Unitarias": pruebas_unitarias.md
+  - "Ejecución en Sandbox": sandbox.md
+  - "Soluciones de Código": soluciones_codigo.md
+  - "Reflexión Final": reflexion.md
+
+# Carpeta donde están los archivos Markdown
+docs_dir: docs
+
+# Carpeta donde se construye el sitio
+site_dir: site
+
+# Plugins opcionales
+plugins:
+  - search
